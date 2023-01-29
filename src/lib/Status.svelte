@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade } from "svelte/transition";
+	import { flip } from "svelte/animate";
 	import { name } from "$/stores";
 	export let users = [];
 </script>
@@ -6,8 +8,8 @@
 <aside>
 	<ul class="user-list">
 		<span>Users: </span>
-		{#each users as user}
-			<li>{user.name}</li>
+		{#each users as user (user.id)}
+			<li animate:flip transition:fade>{user.name}</li>
 		{/each}
 	</ul>
 	<p class="login-info">
