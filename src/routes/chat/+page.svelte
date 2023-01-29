@@ -16,12 +16,17 @@
 	const socket = io();
 
 	let messages = [];
+	let users = [];
 	let text = "";
 
 	socket.on("message", async (message) => {
 		messages = [...messages, message];
 		await tick();
 		window.scrollTo(0, document.body.scrollHeight);
+	});
+
+	socket.on("users", (_users) => {
+		users = _users;
 	});
 
 	function sendMessage() {
@@ -37,6 +42,6 @@
 	});
 </script>
 
-<Status />
+<Status {users} />
 <Messages bind:messages />
 <SendForm bind:text {sendMessage} />
