@@ -2,7 +2,8 @@
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
 	import { name } from "$/stores";
-	export let users = [];
+	import type { user } from "$/types";
+	export let users: user[] = [];
 </script>
 
 <aside>

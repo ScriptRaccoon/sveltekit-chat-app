@@ -1,5 +1,7 @@
-<script>
-	export let messages = [];
+<script lang="ts">
+	import type { message } from "$/types";
+
+	export let messages: message[] = [];
 </script>
 
 <div>

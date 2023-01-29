@@ -8,9 +8,10 @@
 	import { name } from "$/stores";
 	import { tick } from "svelte";
 	import { onMount } from "svelte";
+	import type { message, user } from "$/types";
 
-	let messages = [];
-	let users = [];
+	let messages: message[] = [];
+	let users: user[] = [];
 	let text = "";
 	let socket;
 
@@ -34,7 +35,7 @@
 	}
 
 	function sendMessage() {
-		socket?.emit("message", {
+		socket.emit("message", {
 			author: $name,
 			text: text,
 		});
