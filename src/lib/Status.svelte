@@ -3,7 +3,7 @@
 </script>
 
 <p>
-	You are logged in as <b>{$name}</b>
+	You are logged in as <b>{$name}</b> &nbsp; <a href="/">Logout</a>
 </p>
 
 <style>

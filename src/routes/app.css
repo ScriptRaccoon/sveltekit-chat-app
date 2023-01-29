@@ -71,3 +71,9 @@ button:hover {
 button:focus-visible {
 	outline: 1px solid white;
 }
+
+/* links */
+
+a {
+	color: inherit;
+}
