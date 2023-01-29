@@ -1,5 +1,5 @@
 <script lang="ts">
-	import io from "socket.io-client";
+	import { io, Socket } from "socket.io-client";
 	import { browser } from "$app/environment";
 	import { goto } from "$app/navigation";
 	import Status from "$lib/Status.svelte";
@@ -8,12 +8,19 @@
 	import { name } from "$/stores";
 	import { tick } from "svelte";
 	import { onMount } from "svelte";
-	import type { message, user } from "$/types";
+	import type {
+		message,
+		user,
+		ServerToClientEvents,
+		ClientToServerEvents,
+	} from "$/types";
 
 	let messages: message[] = [];
 	let users: user[] = [];
 	let text = "";
-	let socket;
+	let socket:
+		| undefined
+		| Socket<ServerToClientEvents, ClientToServerEvents>;
 
 	if (browser && !$name) {
 		goto("/");
@@ -31,14 +38,15 @@
 		});
 
 		onMount(() => {
-			socket.emit("name", $name);
+			socket?.emit("name", $name);
 		});
 	}
 
 	function sendMessage() {
-		socket.emit("message", {
+		socket?.emit("message", {
 			author: $name,
 			text: text,
+			bot: false,
 		});
 		text = "";
 	}

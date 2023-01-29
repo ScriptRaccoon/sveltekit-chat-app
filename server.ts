@@ -10,21 +10,12 @@ const server = app.listen(PORT, () => {
 	console.log("server is listening on port", PORT);
 });
 
-interface ServerToClientEvents {
-	message: (m: message) => void;
-	users: (u: user[]) => void;
-}
-
-interface ClientToServerEvents {
-	name: (n: string) => void;
-	message: (m: message) => void;
-}
-
-interface InterServerEvents {}
-
-interface SocketData {
-	name: string;
-}
+import type {
+	ClientToServerEvents,
+	ServerToClientEvents,
+	InterServerEvents,
+	SocketData,
+} from "./src/types";
 
 const io = new Server<
 	ClientToServerEvents,
