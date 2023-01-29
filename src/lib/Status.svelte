@@ -3,7 +3,8 @@
 </script>
 
 <p>
-	You are logged in as <b>{$name}</b> &nbsp; <a href="/">Logout</a>
+	You are logged in as <b>{$name}</b> &nbsp;
+	<a href="/" data-sveltekit-reload>Logout</a>
 </p>
 
 <style>
