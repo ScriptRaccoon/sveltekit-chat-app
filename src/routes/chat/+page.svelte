@@ -29,6 +29,7 @@
 		socket.on("users", (_users) => {
 			users = _users;
 		});
+
 		onMount(() => {
 			socket.emit("name", $name);
 		});

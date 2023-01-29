@@ -35,9 +35,9 @@ const io = new Server<
 
 io.attach(server);
 
-io.on("connection", (socket) => {
-	let users: user[] = [];
+let users: user[] = [];
 
+io.on("connection", (socket) => {
 	socket.on("name", async (name) => {
 		socket.data.name = name;
 
