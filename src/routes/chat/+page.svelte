@@ -7,6 +7,7 @@
 	import SendForm from "$lib/Send.svelte";
 	import { name } from "$/stores";
 	import { tick } from "svelte";
+	import { onMount } from "svelte";
 
 	if (browser && !$name) {
 		goto("/");
@@ -30,6 +31,10 @@
 		});
 		text = "";
 	}
+
+	onMount(() => {
+		socket.emit("name", $name);
+	});
 </script>
 
 <Status />

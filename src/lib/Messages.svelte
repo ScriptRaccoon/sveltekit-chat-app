@@ -6,8 +6,10 @@
 	<ol>
 		{#each messages as message}
 			<li>
-				<span class="author">{message.author}:</span>
-				<span>{message.text}</span>
+				{#if !message.bot}
+					<span class="author">{message.author}:</span>
+				{/if}
+				<span class:bot={message.bot}>{message.text}</span>
 			</li>
 		{/each}
 	</ol>
@@ -27,5 +29,8 @@
 	}
 	.author {
 		color: var(--dark-font-color);
+	}
+	.bot {
+		font-weight: bold;
 	}
 </style>
