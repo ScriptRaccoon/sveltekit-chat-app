@@ -6,7 +6,7 @@
 	import Messages from "$lib/Messages.svelte";
 	import SendForm from "$lib/Send.svelte";
 	import { name } from "$/stores";
-	import { tick } from "svelte";
+
 	import { onMount } from "svelte";
 	import type {
 		message,
@@ -17,6 +17,7 @@
 
 	let messages: message[] = [];
 	let users: user[] = [];
+	let scroll_to_bottom = async () => {};
 	let text = "";
 	let socket:
 		| undefined
@@ -29,8 +30,7 @@
 
 		socket.on("message", async (message) => {
 			messages = [...messages, message];
-			await tick();
-			window.scrollTo(0, document.body.scrollHeight);
+			scroll_to_bottom();
 		});
 
 		socket.on("users", (_users) => {
@@ -53,5 +53,5 @@
 </script>
 
 <Status {users} />
-<Messages bind:messages />
+<Messages bind:messages bind:scroll_to_bottom />
 <SendForm bind:text {sendMessage} />

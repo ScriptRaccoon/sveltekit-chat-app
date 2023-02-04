@@ -1,10 +1,18 @@
 <script lang="ts">
 	import type { message } from "$/types";
+	import { tick } from "svelte";
 
 	export let messages: message[] = [];
+
+	let messages_element: HTMLElement;
+
+	export const scroll_to_bottom = async () => {
+		await tick();
+		messages_element.scrollTop = messages_element.scrollHeight;
+	};
 </script>
 
-<div>
+<section class="messages" bind:this={messages_element}>
 	<ol>
 		{#each messages as message}
 			<li>
@@ -15,12 +23,13 @@
 			</li>
 		{/each}
 	</ol>
-</div>
+</section>
 
 <style>
-	div {
+	.messages {
 		padding: 0.5rem;
 		overflow-y: scroll;
+		scroll-behavior: smooth;
 	}
 	ol {
 		list-style-type: none;
