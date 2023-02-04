@@ -20,8 +20,7 @@
 <style>
 	div {
 		padding: 0.5rem;
-		flex-grow: 1;
-		overflow-y: auto;
+		overflow-y: scroll;
 	}
 	ol {
 		list-style-type: none;
