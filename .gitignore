@@ -10,4 +10,5 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 todo.txt
 server.js
+sockets.js
 src/*.js
