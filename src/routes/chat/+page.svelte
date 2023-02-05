@@ -7,7 +7,7 @@
 	import SendForm from "$lib/Send.svelte";
 	import { name } from "$/stores";
 
-	import { onMount, tick } from "svelte";
+	import { tick } from "svelte";
 
 	import type {
 		message,
@@ -27,7 +27,13 @@
 	if (browser && !$name) {
 		goto("/");
 	} else {
+		setup_socket();
+	}
+
+	function setup_socket() {
 		socket = io();
+
+		socket.emit("name", $name);
 
 		socket.on("message", async (message) => {
 			messages = [...messages, message];
@@ -36,10 +42,6 @@
 
 		socket.on("users", (_users) => {
 			users = _users;
-		});
-
-		onMount(() => {
-			socket?.emit("name", $name);
 		});
 	}
 
@@ -52,13 +54,13 @@
 		text = "";
 	}
 
-	export let scroll_to_bottom = async () => {
+	async function scroll_to_bottom() {
 		await tick();
 		if (messages_element) {
 			messages_element.scrollTop =
 				messages_element.scrollHeight;
 		}
-	};
+	}
 </script>
 
 {#if $name}
