@@ -1,4 +1,4 @@
-/* reset */
+/* size reset */
 
 * {
 	margin: 0;
@@ -16,7 +16,7 @@
 	--dark-font-color: #aaa;
 }
 
-/* global styles */
+/* body styles */
 
 body {
 	font-family: Arial, Helvetica, sans-serif;

@@ -9,15 +9,14 @@
 </script>
 
 <form on:submit|preventDefault={handle_login}>
-	<div>
-		<label for="nameInput">Choose a name</label>
-		<input
-			id="nameInput"
+	<label
+		>Choose a name&nbsp; <input
 			type="text"
 			bind:value={my_name}
 			required={true}
-		/>
-	</div>
+		/></label
+	>
+
 	<button>Start the chat</button>
 </form>
 
@@ -25,7 +24,9 @@
 	form {
 		padding: 1rem;
 	}
-	div {
+
+	label {
+		display: block;
 		margin-bottom: 1rem;
 	}
 </style>

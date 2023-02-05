@@ -1,29 +1,25 @@
-<script>
+<script lang="ts">
 	import { page } from "$app/stores";
 </script>
 
-<h2>Error</h2>
-
-<div>
-	<p>Sorry, something went wrong!</p>
-
-	<pre>{$page.status}: {$page.error.message}</pre>
-
+<section>
+	<h2>Error</h2>
+	<pre>{$page.status}: {$page?.error?.message}</pre>
+	<br />
 	<a href="/">Home</a>
-</div>
+</section>
 
 <style>
+	section {
+		text-align: center;
+	}
+
 	h2 {
 		padding-block: 1rem;
-		text-align: center;
-		color: tomato;
+		color: yellow;
 	}
-	div {
-		text-align: center;
-		line-height: 2;
-	}
+
 	pre {
-		font-weight: bold;
-		color: var(--dark-font-color);
+		color: yellow;
 	}
 </style>
