@@ -1,15 +1,7 @@
 <script lang="ts">
 	import type { message } from "$/types";
-	import { tick } from "svelte";
-
 	export let messages: message[] = [];
-
-	let messages_element: HTMLElement;
-
-	export const scroll_to_bottom = async () => {
-		await tick();
-		messages_element.scrollTop = messages_element.scrollHeight;
-	};
+	export let messages_element: HTMLElement;
 </script>
 
 <section class="messages" bind:this={messages_element}>
