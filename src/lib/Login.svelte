@@ -2,13 +2,13 @@
 	import { goto } from "$app/navigation";
 	import { name } from "$/stores";
 	let my_name = "";
-	function handleLogin() {
+	function handle_login() {
 		$name = my_name;
 		goto("/chat");
 	}
 </script>
 
-<form on:submit|preventDefault={handleLogin}>
+<form on:submit|preventDefault={handle_login}>
 	<div>
 		<label for="nameInput">Choose a name</label>
 		<input
