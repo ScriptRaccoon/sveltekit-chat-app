@@ -24,9 +24,7 @@ const io = new Server<
 	ServerToClientEvents,
 	InterServerEvents,
 	SocketData
->();
-
-io.attach(server);
+>(server);
 
 let users: user[] = [];
 
