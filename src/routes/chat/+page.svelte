@@ -61,6 +61,17 @@
 	};
 </script>
 
-<Status {users} />
-<Messages bind:messages bind:messages_element />
-<SendForm bind:text {sendMessage} />
+{#if $name}
+	<Status {users} />
+	<Messages bind:messages bind:messages_element />
+	<SendForm bind:text {sendMessage} />
+{:else}
+	<p>You are not logged in.</p>
+{/if}
+
+<style>
+	p {
+		text-align: center;
+		padding-block: 1rem;
+	}
+</style>
