@@ -1,4 +1,5 @@
-import type { Server } from "socket.io";
+import type { IncomingMessage, ServerResponse, Server } from "http";
+import { Server as ioServer } from "socket.io";
 
 import type {
 	ClientToServerEvents,
@@ -8,15 +9,18 @@ import type {
 	user,
 } from "./src/types";
 
-export function setup_sockets(
-	io: Server<
+export function attach_sockets(
+	server: Server<typeof IncomingMessage, typeof ServerResponse>
+) {
+	let users: user[] = [];
+
+	const io = new ioServer<
 		ClientToServerEvents,
 		ServerToClientEvents,
 		InterServerEvents,
 		SocketData
-	>,
-	users: user[]
-) {
+	>(server);
+
 	io.on("connection", (socket) => {
 		socket.on("name", async (name) => {
 			socket.data.name = name;
