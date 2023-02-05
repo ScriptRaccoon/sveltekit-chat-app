@@ -6,7 +6,9 @@
 	"scripts": {
 		"start": "node server.js",
 		"dev": "vite dev",
-		"build": "vite build && tsc server.ts --esModuleInterop --target esnext --moduleResolution node",
+		"build:kit": "vite build",
+		"build:server": "tsc server.ts --esModuleInterop --target esnext --moduleResolution node",
+		"build": "npm run build:kit && npm run build:server",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
