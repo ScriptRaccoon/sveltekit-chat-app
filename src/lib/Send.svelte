@@ -1,9 +1,9 @@
 <script lang="ts">
 	export let text = "";
-	export let sendMessage = () => {};
+	export let send_message = () => {};
 </script>
 
-<form on:submit|preventDefault={sendMessage}>
+<form on:submit|preventDefault={send_message}>
 	<input aria-label="message" type="text" bind:value={text} />
 	<button>Send message</button>
 </form>

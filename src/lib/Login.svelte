@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { name } from "$/stores";
-	let my_name = "";
+	let name_input = "";
 	function handle_login() {
-		$name = my_name;
+		$name = name_input;
 		goto("/chat");
 	}
 </script>
@@ -12,7 +12,7 @@
 	<label
 		>Choose a name&nbsp; <input
 			type="text"
-			bind:value={my_name}
+			bind:value={name_input}
 			required={true}
 		/></label
 	>

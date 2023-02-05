@@ -45,7 +45,7 @@
 		});
 	}
 
-	function sendMessage() {
+	function send_message() {
 		socket?.emit("message", {
 			author: $name,
 			text: text,
@@ -66,7 +66,7 @@
 {#if $name}
 	<Status {users} />
 	<Messages bind:messages bind:messages_element />
-	<SendForm bind:text {sendMessage} />
+	<SendForm bind:text {send_message} />
 {:else}
 	<p>You are not logged in.</p>
 {/if}
